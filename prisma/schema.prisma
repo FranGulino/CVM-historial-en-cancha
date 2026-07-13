@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MatchPhase {
+  FASE_1
+  NONAGONAL
+  ETAPA_ELIMINATORIA
+}
+
+enum AttendanceType {
+  PRESENCIAL
+  A_LA_DISTANCIA
+}
+
+model Match {
+  id            String         @id @default(uuid())
+  date          DateTime
+  fixtureRound  Int            // Número de fecha
+  phase         MatchPhase     @default(FASE_1)
+  homeTeam      String
+  awayTeam      String
+  goalsVM       Int?           // Nullable si el partido no se jugó aún
+  goalsOpponent Int?           // Nullable
+  scorers       String[]       // Goleadores de Villa Mitre u otros
+  attendances   Attendance[]
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Attendance {
+  id        String         @id @default(uuid())
+  userId    String         // ID provisto por Clerk
+  matchId   String
+  match     Match          @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  type      AttendanceType
+  
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@unique([userId, matchId]) // Un usuario solo puede registrar una asistencia por partido
+}
