@@ -27,7 +27,7 @@ async function main() {
       awayTeam: "Círculo Deportivo",
       goalsVM: 2,
       goalsOpponent: 0,
-      scorers: ["Joaquín Vivani", "Sebastián Jeldres"],
+      scorers: ["Pablo Mujica", "Marcos Escobar"],
     },
     // Fecha 3 fue Libre para Villa Mitre
     {
@@ -58,7 +58,7 @@ async function main() {
       awayTeam: "Villa Mitre",
       goalsVM: 1,
       goalsOpponent: 1,
-      scorers: ["Joaquín Vivani"],
+      scorers: ["Jeronimo Almada"],
     },
     {
       date: new Date("2026-05-03T16:30:00Z"),
@@ -76,9 +76,9 @@ async function main() {
       phase: MatchPhase.FASE_1,
       homeTeam: "Guillermo Brown",
       awayTeam: "Villa Mitre",
-      goalsVM: 1,
+      goalsVM: 0,
       goalsOpponent: 1,
-      scorers: ["Fernando Pettineroli"],
+      scorers: [],
     },
     {
       date: new Date("2026-05-17T16:30:00Z"),
@@ -88,7 +88,7 @@ async function main() {
       awayTeam: "Sol de Mayo",
       goalsVM: 2,
       goalsOpponent: 1,
-      scorers: ["Sebastián Jeldres", "Ezequiel Cérica"],
+      scorers: ["Enzo Gonzalez", "Thiago Perez"],
     },
     {
       date: new Date("2026-05-25T16:30:00Z"),
@@ -127,9 +127,9 @@ async function main() {
       phase: MatchPhase.FASE_1,
       homeTeam: "Ramón Santamarina",
       awayTeam: "Villa Mitre",
-      goalsVM: 0,
-      goalsOpponent: 2,
-      scorers: [],
+      goalsVM: 2,
+      goalsOpponent: 0,
+      scorers: ["Jeronimo Almada", "Santiago Gomez"],
     },
     {
       date: new Date("2026-06-28T16:30:00Z"),
@@ -139,7 +139,7 @@ async function main() {
       awayTeam: "Alvarado",
       goalsVM: 1,
       goalsOpponent: 0,
-      scorers: ["Gabriel Obredor"],
+      scorers: ["Victor Ayala"],
     },
     {
       date: new Date("2026-07-05T15:00:00Z"),
