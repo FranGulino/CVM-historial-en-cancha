@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Mi Historial de Cancha - Villa Mitre",
-  description: "Bitácora digital para registrar tu asistencia a los partidos de Villa Mitre y analizar tu efectividad como amuleto.",
+  title: "El Fortín Digital - Mi Historial de Cancha",
+  description: "Bitácora personal para registrar la asistencia a los partidos de Villa Mitre y analizar las estadísticas de efectividad del hincha.",
 };
 
 export default function RootLayout({
@@ -27,9 +23,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html
         lang="es"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`${montserrat.variable} h-full antialiased`}
       >
-        <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-50">{children}</body>
+        <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-50">
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
