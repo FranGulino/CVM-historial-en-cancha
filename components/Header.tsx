@@ -3,8 +3,13 @@
 import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHomeActive = pathname === "/";
+  const isPartidosActive = pathname.startsWith("/partidos");
+
   return (
     <header className="absolute top-0 left-0 z-40 w-full bg-transparent">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -29,20 +34,31 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Enlaces de Navegación del Centro (Estilo Captura) */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase text-zinc-400">
+        {/* Enlaces de Navegación del Centro (Estilo Captura con estado activo dinámico) */}
+        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
           <Link
             href="/"
-            className="text-white border-b-2 border-[#2d6a4f] pb-1 font-bold"
+            className={`pb-1 transition-all ${
+              isHomeActive
+                ? "text-white border-b-2 border-[#2d6a4f] font-bold"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
           >
             Institucional
           </Link>
-          <Link href="#partidos" className="hover:text-zinc-200 transition-colors">
+          <Link
+            href="/partidos"
+            className={`pb-1 transition-all ${
+              isPartidosActive
+                ? "text-white border-b-2 border-[#2d6a4f] font-bold"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
             Partidos
           </Link>
-          <Link href="#socio" className="hover:text-zinc-200 transition-colors opacity-70">
+          <span className="text-zinc-450 opacity-40 cursor-not-allowed">
             Socio Digital
-          </Link>
+          </span>
         </nav>
 
         {/* Acciones del Lado Derecho (Clerk integrado con estética de captura) */}
