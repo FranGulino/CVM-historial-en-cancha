@@ -158,9 +158,9 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
         </div>
 
         {/* Sección de Escudos Enfrentados y Marcador Central */}
-        <div className="flex items-center justify-between py-2 mb-4">
+        <div className="flex items-center justify-between py-2 mb-4 gap-2">
           {/* Equipo Local */}
-          <div className="flex flex-col items-center gap-2 w-5/12 text-center">
+          <div className="flex flex-col items-center gap-2 flex-1 min-w-0 text-center">
             <TeamShield teamName={match.homeTeam} />
             <span className={`text-xs font-bold tracking-tight truncate w-full ${match.homeTeam === "Villa Mitre" ? "text-white font-extrabold" : "text-zinc-400"}`}>
               {match.homeTeam === "Villa Mitre" ? "VILLA MITRE" : match.homeTeam}
@@ -171,9 +171,9 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
           </div>
 
           {/* Marcador Central */}
-          <div className="flex flex-col items-center justify-center w-2/12">
+          <div className="flex flex-col items-center justify-center flex-shrink-0 min-w-[75px] text-center">
             {isPlayed ? (
-              <div className={`text-2xl font-black tracking-tighter tabular-nums font-sans ${
+              <div className={`text-2xl font-black tracking-tighter tabular-nums font-sans whitespace-nowrap ${
                 resultType === "VICTORIA" ? "text-[#4ade80]" :
                 resultType === "EMPATE" ? "text-white" :
                 "text-zinc-500"
@@ -189,7 +189,7 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
                 )}
               </div>
             ) : (
-              <div className="text-sm font-bold text-zinc-650 uppercase tracking-widest">
+              <div className="text-sm font-bold text-zinc-650 uppercase tracking-widest whitespace-nowrap">
                 {"VS"}
               </div>
             )}
@@ -199,7 +199,7 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
           </div>
 
           {/* Equipo Visitante */}
-          <div className="flex flex-col items-center gap-2 w-5/12 text-center">
+          <div className="flex flex-col items-center gap-2 flex-1 min-w-0 text-center">
             <TeamShield teamName={match.awayTeam} />
             <span className={`text-xs font-bold tracking-tight truncate w-full ${match.awayTeam === "Villa Mitre" ? "text-white font-extrabold" : "text-zinc-400"}`}>
               {match.awayTeam === "Villa Mitre" ? "VILLA MITRE" : match.awayTeam}
@@ -231,7 +231,13 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
         </div>
 
         {/* Botones Interactivos de Asistencia */}
-        <AttendanceButtons matchId={match.id} activeType={activeAttendanceType} isHome={match.homeTeam === "Villa Mitre"} />
+        {isPlayed ? (
+          <AttendanceButtons matchId={match.id} activeType={activeAttendanceType} isHome={match.homeTeam === "Villa Mitre"} />
+        ) : (
+          <div className="flex items-center justify-center h-10 w-full rounded-[8px] bg-zinc-950/30 border border-zinc-900 text-[9px] font-bold text-zinc-650 uppercase tracking-widest">
+            {"⏳ Partido Pendiente"}
+          </div>
+        )}
       </div>
     </div>
   );
