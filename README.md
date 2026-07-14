@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# El Fortín Digital — Bitácora Personal de Villa Mitre 🚀
 
-## Getting Started
+🏢 Plataforma Web de Registro, Asistencia y Analítica del Hincha
 
-First, run the development server:
+El Fortín Digital es una solución web full-stack diseñada bajo una arquitectura moderna para los simpatizantes del Club Villa Mitre. El sistema funciona como el núcleo operativo del hincha, permitiéndole registrar de manera exacta su presencia en cada jornada deportiva (sea de local, visitante o a la distancia) y visualizar métricas de fidelidad y rendimiento en tiempo real basadas en los resultados reales del equipo.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+La plataforma se conecta a un motor relacional en la nube para sincronizar dinámicamente el fixture del Torneo Federal A 2026, los goleadores de cada encuentro y las estadísticas acumuladas del usuario.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📸 Interfaz del Sistema (Mística & Estadísticas)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Dashboard General & Portal | Fixture & Control de Asistencia |
+| :---: | :---: |
+| **Sección Institucional** <br> *Cuenta regresiva en tiempo real, bienvenida interactiva y geolocalización del templo de Maipú y Necochea.* | **Fixture Federal A** <br> *Filtros avanzados por sede/resultado, buscador semántico y registro condicional según la localía.* |
+| <img src="https://github.com/user-attachments/assets/29b7e942-bf02-4ac0-87b7-3c16bdbf0f5f" width="100%" /> | <img src="https://github.com/user-attachments/assets/59a11f27-fb1a-48e8-bdf5-672dafb4b7d3" width="100%" /> |
 
-## Learn More
+| Panel de Socio & Historial | Ecosistema del Hincha |
+| :---: | :---: |
+| **Perfil del Hincha** <br> *Métricas de efectividad de puntos, cálculo de fidelidad, carnet digital de socio y contador de goles gritados en vivo.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚪ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>⚫ **Relación de Goles:** Lógica que procesa de forma asíncrona qué goles viste convertir en la tribuna.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
+| <img src="https://github.com/user-attachments/assets/b8ddb5be-436a-41fb-aa50-f884c0e7ddec" width="100%" /> | *“A Villa Mitre yo lo sigo siempre a todos lados...”* <br><br> El Fortín Digital es la bitácora oficial de los simpatizantes del Tricolor. Un registro formal, exhaustivo y estético de cada paso que damos alentando al más grande del sur argentino. |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack (Ecosistema Tecnológico)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Framework:** Next.js 14 (App Router) con TypeScript para garantizar tipado estricto y excelente performance en la renderización del servidor.
+* **Base de Datos:** PostgreSQL administrado y hospedado de forma elástica en la nube mediante Neon Database.
+* **ORM:** Prisma ORM para el modelado relacional de datos, control de migraciones del fixture y queries optimizadas.
+* **Autenticación:** Clerk Auth para la gestión segura de sesiones de usuarios y vinculación única de perfiles de hinchas con su ID de socio.
+* **Estilos:** Tailwind CSS con una paleta de colores personalizada que respeta fielmente la identidad del Club (verde bosque, blanco y negro antracita).
+* **Despliegue:** Vercel.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 Desafíos Técnicos Resueltos & Arquitectura
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 1. Adaptación Dinámica de UI en Base a Reglas de Negocio (Localía)
+Uno de los puntos clave de UX fue asegurar que los botones de acción para el hincha no permitieran registrar estados inconsistentes (como marcar *"Fui a la cancha"* en un partido que se jugaba a cientos de kilómetros de distancia de local).
+* Se programó una capa lógica que evalúa dinámicamente la propiedad `sede` (Local/Visitante) de cada partido obtenido desde Neon DB.
+* En base a este estado, el componente de React muta de forma condicional para renderizar el botón `🏟️ Fui a la cancha` o `✈️ De visitante`, garantizando la consistencia semántica en la bitácora del usuario.
+
+### 2. Lógica de Relación Dinámica de Goles Presenciados (Métrica de Suerte)
+El mayor desafío en el perfil fue estructurar una consulta eficiente que determinara exactamente qué goleadores de Villa Mitre el hincha había presenciado en vivo en el estadio.
+* Se diseñó un modelo relacional donde las **Asistencias** se asocian de forma única al par `[Usuario - Partido]`.
+* Al renderizar el perfil, el backend cruza los partidos donde el usuario marcó asistencia presencial (`🏟️ Fui a la cancha`) y extrae los strings del array de goleadores de esos encuentros específicos. Esto permite calcular tanto el total de "goles gritados en vivo" como rankear los goleadores presenciados, sin generar sobrecarga de lecturas (Over-fetching) en la base de datos de Neon.
+
+### 3. Sincronización Segura de Usuarios Extensibles con Clerk Metadata
+Para evitar la duplicación de datos sensibles y mantener la aplicación liviana, no se almacenan contraseñas ni datos personales en la base de datos de PostgreSQL.
+* Toda la autenticación e información del perfil corre sobre la infraestructura segura de Clerk.
+* Para generar la tarjeta de socio digital única (carnet), se consume de forma segura el ID de usuario de Clerk y se procesa del lado del servidor para generar un hash alfanumérico único para el usuario, simulando un número de credencial de socio inmutable.
