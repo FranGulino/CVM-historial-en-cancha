@@ -1,8 +1,8 @@
-# El Fortín Digital — Bitácora Personal de Villa Mitre 🚀
+# CVM — Historial en Cancha 🚀
 
 🏢 Plataforma Web de Registro, Asistencia y Analítica del Hincha
 
-El Fortín Digital es una solución web full-stack diseñada bajo una arquitectura moderna para los simpatizantes del Club Villa Mitre. El sistema funciona como el núcleo operativo del hincha, permitiéndole registrar de manera exacta su presencia en cada jornada deportiva (sea de local, visitante o a la distancia) y visualizar métricas de fidelidad y rendimiento en tiempo real basadas en los resultados reales del equipo.
+CVM — Historial en Cancha es una solución web full-stack diseñada bajo una arquitectura moderna para los simpatizantes del Club Villa Mitre. El sistema funciona como el núcleo operativo del hincha, permitiéndole registrar de manera exacta su presencia en cada jornada deportiva (sea de local, visitante o a la distancia) y visualizar métricas de fidelidad y rendimiento en tiempo real basadas en los resultados reales del equipo.
 
 La plataforma se conecta a un motor relacional en la nube para sincronizar dinámicamente el fixture del Torneo Federal A 2026, los goleadores de cada encuentro y las estadísticas acumuladas del usuario.
 
@@ -17,14 +17,14 @@ La plataforma se conecta a un motor relacional en la nube para sincronizar diná
 
 | Panel de Socio & Historial | Ecosistema del Hincha |
 | :---: | :---: |
-| **Perfil del Hincha** <br> *Métricas de efectividad de puntos, cálculo de fidelidad, carnet digital de socio y contador de goles gritados en vivo.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚪ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>⚫ **Relación de Goles:** Lógica que procesa de forma asíncrona qué goles viste convertir en la tribuna.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
-| <img src="https://github.com/user-attachments/assets/b8ddb5be-436a-41fb-aa50-f884c0e7ddec" width="100%" /> | *“A Villa Mitre yo lo sigo siempre a todos lados...”* <br><br> El Fortín Digital es la bitácora oficial de los simpatizantes del Tricolor. Un registro formal, exhaustivo y estético de cada paso que damos alentando al más grande del sur argentino. |
+| **Perfil del Hincha** <br> *Métricas de efectividad de puntos, cálculo de fidelidad, carnet digital de socio y contador de goles gritados en vivo.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚫ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>⚪ **Relación de Goles:** Lógica que procesa de forma asíncrona qué goles viste convertir en la tribuna.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
+| <img src="https://github.com/user-attachments/assets/b8ddb5be-436a-41fb-aa50-f884c0e7ddec" width="100%" /> | *“A Villa Mitre yo lo sigo siempre a todos lados...”* <br><br> Este sistema representa la bitácora oficial de los simpatizantes del Tricolor. Un registro formal, exhaustivo y estético de cada paso que damos alentando al más grande del sur argentino. |
 
 ---
 
 ## 🛠️ Tech Stack (Ecosistema Tecnológico)
 
-* **Framework:** Next.js 14 (App Router) con TypeScript para garantizar tipado estricto y excelente performance en la renderización del servidor.
+* **Framework:** Next.js (App Router) con TypeScript para garantizar tipado estricto y excelente performance en la renderización del servidor.
 * **Base de Datos:** PostgreSQL administrado y hospedado de forma elástica en la nube mediante Neon Database.
 * **ORM:** Prisma ORM para el modelado relacional de datos, control de migraciones del fixture y queries optimizadas.
 * **Autenticación:** Clerk Auth para la gestión segura de sesiones de usuarios y vinculación única de perfiles de hinchas con su ID de socio.
@@ -49,3 +49,14 @@ El mayor desafío en el perfil fue estructurar una consulta eficiente que determ
 Para evitar la duplicación de datos sensibles y mantener la aplicación liviana, no se almacenan contraseñas ni datos personales en la base de datos de PostgreSQL.
 * Toda la autenticación e información del perfil corre sobre la infraestructura segura de Clerk.
 * Para generar la tarjeta de socio digital única (carnet), se consume de forma segura el ID de usuario de Clerk y se procesa del lado del servidor para generar un hash alfanumérico único para el usuario, simulando un número de credencial de socio inmutable.
+
+### 4. Navegación Móvil de Alto Rendimiento (Mobile-First Floating Navigation)
+Para maximizar el espacio de lectura en dispositivos móviles y replicar la experiencia de usuario de una aplicación móvil nativa (PWA):
+* Se implementó un componente de navegación flotante tipo píldora (`bottom-tab`) fijado en la parte inferior de la pantalla (`fixed bottom-6`).
+* Se utilizó un diseño híbrido con propiedades de CSS avanzadas como `backdrop-blur-md` y opacidades dinámicas sobre una paleta verde-oscura, logrando un efecto translúcido que permite leer el contenido del fixture por detrás al hacer scroll.
+* Los enlaces de navegación (Club 🏛️, Partidos ⚽, Perfil 👤) calculan asíncronamente la ruta activa (`pathname`) para iluminar únicamente el ícono del módulo actual, evitando renderizados innecesarios.
+
+---
+
+## 🧑‍💻 Desarrollador
+* **Franco Gulino** - *Sistemas / Desarrollador Full-Stack*
