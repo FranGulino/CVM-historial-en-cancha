@@ -484,7 +484,7 @@ export default async function HinchaPage() {
 
       <footer className="border-t border-zinc-900 bg-zinc-950 py-8 text-center">
         <p className="text-[10px] text-zinc-600 font-bold tracking-wider uppercase">
-          {"El Fortín de Maipú y Necochea — Bitácora Personal de Villa Mitre © 2026"}
+          {"El Fortín Digital — Bitácora Personal de Villa Mitre © 2026"}
         </p>
       </footer>
     </div>

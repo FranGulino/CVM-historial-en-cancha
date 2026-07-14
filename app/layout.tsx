@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Mi Historial de Cancha — Villa Mitre",
+  title: "El Fortín Digital - Mi Historial de Cancha",
   description: "Bitácora personal para registrar la asistencia a los partidos de Villa Mitre y analizar las estadísticas de efectividad del hincha.",
   icons: {
     icon: "/club-escudo-villa-mitre-logo-png_seeklogo-461955.webp",

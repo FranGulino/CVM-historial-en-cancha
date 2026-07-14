@@ -57,7 +57,7 @@ export default function Error({
         </div>
 
         <p className="text-[9px] text-zinc-600 font-bold uppercase tracking-widest pt-4">
-          {"El Fortín de Maipú y Necochea — Villa Mitre"}
+          {"El Fortín Digital — Villa Mitre"}
         </p>
       </div>
     </div>

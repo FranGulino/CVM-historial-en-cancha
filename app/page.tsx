@@ -54,7 +54,7 @@ export default async function HomePage() {
 
                 {/* Subtítulo */}
                 <p className="text-sm sm:text-base text-zinc-350 leading-relaxed max-w-xl">
-                  {"El Fortín de Maipú y Necochea es la bitácora oficial de los simpatizantes del Club Villa Mitre. Un registro histórico, formal y exhaustivo de nuestra presencia en cada jornada deportiva."}
+                  {"El Fortín Digital es la bitácora oficial de los simpatizantes del Club Villa Mitre. Un registro histórico, formal y exhaustivo de nuestra presencia en cada jornada deportiva."}
                 </p>
 
                 {/* Botones de acción del Hero */}
@@ -172,7 +172,7 @@ export default async function HomePage() {
                   <div>
                     <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Club"}</p>
                     <p className="text-sm font-bold text-zinc-300">{"Club Villa Mitre"}</p>
-                    <p className="text-xs text-zinc-500">{"Fundado en 1933"}</p>
+                    <p className="text-xs text-zinc-500">{"Fundado en 1924"}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ export default async function HomePage() {
 
       <footer className="border-t border-zinc-900 bg-zinc-950 py-8 text-center">
         <p className="text-[10px] text-zinc-600 font-bold tracking-wider uppercase">
-          {"El Fortín de Maipú y Necochea — Bitácora Personal de Villa Mitre © 2026"}
+          {"El Fortín Digital — Bitácora Personal de Villa Mitre © 2026"}
         </p>
       </footer>
     </div>

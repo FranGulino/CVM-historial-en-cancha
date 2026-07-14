@@ -25,12 +25,12 @@ export default function Header() {
               className="object-contain"
             />
           </div>
-          <div className="flex flex-col leading-tight font-sans">
-            <span className="text-base font-extrabold tracking-tight text-white leading-none">
+          <div className="flex items-baseline gap-1 font-sans">
+            <span className="text-lg font-extrabold tracking-tight text-white">
               El Fortín
             </span>
-            <span className="text-[10px] font-bold tracking-widest text-[#2d6a4f] uppercase">
-              de Maipú y Necochea
+            <span className="text-lg font-extrabold tracking-tight text-[#2d6a4f]">
+              Digital
             </span>
           </div>
         </Link>
