@@ -162,6 +162,82 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Sección del Mapa: Nuestra Casa */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-6">
+          {/* Encabezado de Sección */}
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase font-sans">
+              {"Nuestra Casa"}
+            </h2>
+            <div className="w-20 h-1 bg-[#2d6a4f] mx-auto rounded-full" />
+            <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest pt-1">
+              {"El Fortín — Maipú y Necochea, Bahía Blanca"}
+            </p>
+          </div>
+
+          {/* Grid: Info + Mapa */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            
+            {/* Panel de Info del Estadio */}
+            <div className="p-6 rounded-[8px] border border-[#2d6a4f]/30 bg-[#1d211e] space-y-5 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{"🏟️"}</span>
+                  <div>
+                    <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Estadio"}</p>
+                    <p className="text-sm font-extrabold text-white">{"El Fortín de Maipú y Necochea"}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{"📍"}</span>
+                  <div>
+                    <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Dirección"}</p>
+                    <p className="text-sm font-bold text-zinc-300">{"Maipú 750, Bahía Blanca"}</p>
+                    <p className="text-xs text-zinc-500">{"Buenos Aires, Argentina"}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{"👕"}</span>
+                  <div>
+                    <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Club"}</p>
+                    <p className="text-sm font-bold text-zinc-300">{"Club Atlético Villa Mitre"}</p>
+                    <p className="text-xs text-zinc-500">{"Fundado en 1933"}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{"🏆"}</span>
+                  <div>
+                    <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Competición Actual"}</p>
+                    <p className="text-sm font-bold text-zinc-300">{"Torneo Federal A 2026"}</p>
+                    <p className="text-xs text-[#2d6a4f] font-bold">{"Zona A — Nonagonal"}</p>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="https://www.google.com/maps/search/Club+Atletico+Villa+Mitre+Bahia+Blanca+Argentina"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 h-9 rounded-[8px] border border-[#2d6a4f]/50 text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f] hover:bg-[#2d6a4f]/10 transition-all"
+              >
+                {"🗺️ Abrir en Google Maps"}
+              </a>
+            </div>
+
+            {/* Mapa Embed de Google Maps — Villa Mitre en El Fortín */}
+            <div className="lg:col-span-2 overflow-hidden rounded-[8px] border border-zinc-800" style={{ height: "340px", position: "relative" }}>
+              <iframe
+                src="https://maps.google.com/maps?q=Club+Atletico+Villa+Mitre+Bahia+Blanca+Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="380"
+                style={{ border: 0, marginTop: "-4px", filter: "invert(90%) hue-rotate(180deg) saturate(0.7) brightness(0.85)" }}
+                allowFullScreen
+                loading="lazy"
+                title="Ubicación El Fortín de Villa Mitre — Bahía Blanca"
+              />
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-zinc-900 bg-zinc-950 py-8 text-center">
