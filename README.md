@@ -13,12 +13,12 @@ La plataforma se conecta a un motor relacional en la nube para sincronizar diná
 | Dashboard General & Portal | Fixture & Control de Asistencia |
 | :---: | :---: |
 | **Sección Institucional** <br> *Cuenta regresiva en tiempo real, bienvenida interactiva y geolocalización del templo de Maipú y Necochea.* | **Fixture Federal A** <br> *Filtros avanzados por sede/resultado, buscador semántico y registro condicional según la localía.* |
-| <img src="https://github.com/user-attachments/assets/ae6caf60-3cc0-4974-87a6-b9b26cc5d6ac" width="100%" /> | <img src="https://github.com/user-attachments/assets/5680ce23-031c-4c0a-8f44-c34c9dc171f2" width="100%" /> |
+| <img src="./cvm-historial-en-cancha.vercel.app_.png" width="100%" /> | <img src="./cvm-historial-en-cancha.vercel.app_ (1).png" width="100%" /> |
 
 | Panel de Socio & Historial | Ecosistema del Hincha |
 | :---: | :---: |
-| **Perfil del Hincha** <br> *Métricas de efectividad de puntos, cálculo de fidelidad en tiempo real, carnet digital de socio y tabla de asistencias.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚫ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>⚪ **Historial de Asistencias:** Registro exacto de partidos y cálculo de efectividad de puntos en base al resultado.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
-| <img src="https://github.com/user-attachments/assets/e0f12ac4-0921-4045-be06-4287a7f80d34" width="100%" /> | *“A Villa Mitre yo lo sigo siempre a todos lados...”* <br><br> Este sistema representa la bitácora oficial de los simpatizantes del Tricolor. Un registro formal, exhaustivo y estético de cada paso que damos alentando al más grande del sur argentino. |
+| **Perfil del Hincha** <br> *Métricas de efectividad de puntos, cálculo de fidelidad en tiempo real, carnet digital de socio (mostrando Partidos de Local y Viajes de Visitante), Tabla de Posiciones de la Hinchada (ranking de fidelidad) y tabla de asistencias.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚫ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>🏆 **Ranking de Fidelidad:** Tabla de posiciones interactiva en tiempo real entre todos los hinchas registrados en la app.<br><br>🏟️ **Viajes de Visitante:** Registro exacto de viajes y partidos presenciales afuera del Fortín, sumando para tu rango de socio.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
+| <img src="./cvm-historial-en-cancha.vercel.app_ (2).png" width="100%" /> | *“A Villa Mitre yo lo sigo siempre a todos lados...”* <br><br> Este sistema representa la bitácora oficial de los simpatizantes del Tricolor. Un registro formal, exhaustivo y estético de cada paso que damos alentando al más grande del sur argentino. |
 
 ---
 
