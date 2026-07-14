@@ -7,9 +7,10 @@ import { toggleAttendance } from "@/app/actions/attendance";
 interface AttendanceButtonsProps {
   matchId: string;
   activeType: "PRESENCIAL" | "A_LA_DISTANCIA" | null;
+  isHome: boolean;
 }
 
-export default function AttendanceButtons({ matchId, activeType }: AttendanceButtonsProps) {
+export default function AttendanceButtons({ matchId, activeType, isHome }: AttendanceButtonsProps) {
   const { isSignedIn } = useAuth();
   const [isPending, startTransition] = useTransition();
   const [optimisticType, setOptimisticType] = useState<"PRESENCIAL" | "A_LA_DISTANCIA" | null>(activeType);
@@ -81,8 +82,8 @@ export default function AttendanceButtons({ matchId, activeType }: AttendanceBut
 
   return (
     <div className="flex gap-2 w-full mt-3 pt-3 border-t border-zinc-900">
-      {renderButton("PRESENCIAL", "En el Fortín", "🏟️")}
-      {renderButton("A_LA_DISTANCIA", "A la Distancia", "📺")}
+      {renderButton("PRESENCIAL", isHome ? "Fui a la cancha" : "De visitante", isHome ? "🏟️" : "✈️")}
+      {renderButton("A_LA_DISTANCIA", "A la distancia", "📺")}
     </div>
   );
 }

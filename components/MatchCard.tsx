@@ -74,11 +74,11 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
   const resultLabel = () => {
     switch (resultType) {
       case "VICTORIA":
-        return "WIN";
+        return "V";
       case "DERROTA":
-        return "LOSS";
+        return "D";
       case "EMPATE":
-        return "DRAW";
+        return "E";
       case "FUTURO":
         return "PROX";
     }
@@ -125,10 +125,10 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
       <div>
         {/* Cabecera de la Tarjeta (Fecha e Indicador de resultado) */}
         <div className="flex items-center justify-between mb-4">
-          <span className="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">
-            {formatDate(match.date)}
+          <span className="text-xs font-bold text-white tracking-wide uppercase">
+            {"Fecha"} {match.fixtureRound}
           </span>
-          <span className={`text-[9px] font-extrabold tracking-wider px-2.5 py-0.5 rounded-full ${badgeClasses()}`}>
+          <span className={`text-[10px] font-black tracking-wider px-3 py-0.5 rounded-full ${badgeClasses()}`}>
             {resultLabel()}
           </span>
         </div>
@@ -162,8 +162,8 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
                 {"VS"}
               </div>
             )}
-            <span className="text-[8px] font-bold text-zinc-600 tracking-widest uppercase mt-1">
-              {"FECHA"} {match.fixtureRound}
+            <span className="text-[9px] font-bold text-zinc-500 tracking-wider mt-1 whitespace-nowrap">
+              {formatDate(match.date)}
             </span>
           </div>
 
@@ -197,7 +197,7 @@ export default function MatchCard({ match, currentUserId }: MatchCardProps) {
         </div>
 
         {/* Botones Interactivos de Asistencia */}
-        <AttendanceButtons matchId={match.id} activeType={activeAttendanceType} />
+        <AttendanceButtons matchId={match.id} activeType={activeAttendanceType} isHome={match.homeTeam === "Villa Mitre"} />
       </div>
     </div>
   );

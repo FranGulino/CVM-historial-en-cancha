@@ -25,7 +25,7 @@ export default async function HomePage() {
 
       <main className="flex-1 space-y-16 pb-16">
         {/* Hero Section overlay con cabecera flotante y cuenta regresiva al costado */}
-        <section className="relative min-h-[650px] lg:h-[650px] flex items-center justify-start overflow-hidden py-20 lg:py-0">
+        <section className="relative min-h-[700px] lg:h-[700px] flex items-center justify-start overflow-hidden py-20 lg:py-0">
           {/* Imagen de fondo de la hinchada */}
           <div className="absolute inset-0 z-0">
             <Image
