@@ -9,6 +9,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHomeActive = pathname === "/";
   const isPartidosActive = pathname.startsWith("/partidos");
+  const isHinchaActive = pathname.startsWith("/hincha");
 
   return (
     <header className="absolute top-0 left-0 z-40 w-full bg-transparent">
@@ -56,9 +57,16 @@ export default function Header() {
           >
             Partidos
           </Link>
-          <span className="text-zinc-450 opacity-40 cursor-not-allowed">
-            Socio Digital
-          </span>
+          <Link
+            href="/hincha"
+            className={`pb-1 transition-all ${
+              isHinchaActive
+                ? "text-white border-b-2 border-[#2d6a4f] font-bold"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            Perfil
+          </Link>
         </nav>
 
         {/* Acciones del Lado Derecho (Clerk integrado con estética de captura) */}
