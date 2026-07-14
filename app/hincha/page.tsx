@@ -166,7 +166,17 @@ export default async function HinchaPage() {
           rankName,
         };
       })
-      .sort((a, b) => b.count - a.count);
+      .sort((a, b) => {
+        if (b.count !== a.count) {
+          return b.count - a.count;
+        }
+        // Desempate de fidelidad:
+        // 1. El usuario actualmente logueado siempre se ve primero en su propia pantalla (fomenta competitividad)
+        if (a.id === userId) return -1;
+        if (b.id === userId) return 1;
+        // 2. Si ninguno es el usuario activo, desempatar alfabéticamente
+        return a.name.localeCompare(b.name);
+      });
   } catch (error) {
     console.error("Error al obtener usuarios de Clerk para el ranking:", error);
   }
