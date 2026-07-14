@@ -26,10 +26,10 @@ interface HinchaHistorialProps {
 export default function HinchaHistorial({ matches, userId }: HinchaHistorialProps) {
   const [activeTab, setActiveTab] = useState<"LOCAL" | "DISTANCIA">("LOCAL");
 
-  // Filtramos la asistencia del usuario actual
-  const userAttendances = matches.filter((match) =>
-    match.attendances.some((att) => att.userId === userId)
-  );
+  // Filtramos la asistencia del usuario actual y la ordenamos de más reciente a más antiguo (descendente)
+  const userAttendances = matches
+    .filter((match) => match.attendances.some((att) => att.userId === userId))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   // Dividimos en Local (PRESENCIAL en El Fortín) y Visitante/Distancia
   const localMatches = userAttendances.filter((match) => {

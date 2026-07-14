@@ -74,14 +74,23 @@ export default async function HinchaPage() {
     stats.attendancePercentage = Math.round((stats.localAttended / stats.localPlayed) * 100);
   }
 
-  // Rango del Hincha en El Fortín
-  if (stats.localAttended >= 8) {
+  // 4. Partidos presenciales asistidos en total (tanto local como de visitante)
+  const userPresencialAttendances = playedMatches.filter((match) =>
+    match.attendances.some((att) => att.userId === userId && att.type === "PRESENCIAL")
+  );
+
+  // Rango de fidelidad total (Local + Visitante presencial)
+  const totalPresencialAttended = userPresencialAttendances.length;
+  
+  if (totalPresencialAttended >= 8) {
     stats.rank = "Abonado de Corazón";
-  } else if (stats.localAttended >= 4) {
+  } else if (totalPresencialAttended >= 4) {
     stats.rank = "Grito de Popular";
-  } else if (stats.localAttended >= 1) {
+  } else if (totalPresencialAttended >= 1) {
     stats.rank = "Hincha de Tribuna";
   }
+
+  const awayAttendedCount = userPresencialAttendances.filter((m) => m.homeTeam !== "Villa Mitre").length;
 
   // 4. Estadísticas comparativas a la distancia (Remoto o visitante)
   const userDistanciaAttendances = playedMatches.filter((match) => {
@@ -101,19 +110,20 @@ export default async function HinchaPage() {
     ? Math.round((distanciaWins / userDistanciaAttendances.length) * 100)
     : 0;
 
-  // 5. Mejor y Peor resultado presenciado en El Fortín
+  // 5. Mejor y Peor resultado presenciado (Asistencias Presenciales: tanto local en El Fortín como de visitante)
+
   // Mejor: victoria con mayor diferencia de goles
-  const bestResult = userLocalAttendances
+  const bestResult = userPresencialAttendances
     .filter((m) => m.goalsVM! > m.goalsOpponent!)
     .sort((a, b) => (b.goalsVM! - b.goalsOpponent!) - (a.goalsVM! - a.goalsOpponent!))[0] ?? null;
 
   // Peor: primero buscamos la derrota con mayor diferencia en contra
   // Si no hay derrotas, mostramos cualquier empate
-  const worstByLoss = userLocalAttendances
+  const worstByLoss = userPresencialAttendances
     .filter((m) => m.goalsVM! < m.goalsOpponent!)
     .sort((a, b) => (a.goalsVM! - a.goalsOpponent!) - (b.goalsVM! - b.goalsOpponent!))[0] ?? null;
 
-  const anyDraw = userLocalAttendances
+  const anyDraw = userPresencialAttendances
     .find((m) => m.goalsVM! === m.goalsOpponent!) ?? null;
 
   const worstResult = worstByLoss ?? anyDraw;
@@ -259,12 +269,12 @@ export default async function HinchaPage() {
                 <span className="text-sm font-extrabold text-white">{stats.localAttended}</span>
               </div>
               <div>
-                <span className="text-[8px] text-zinc-500 font-bold tracking-widest block uppercase font-sans">{"Goles Gritados"}</span>
-                <span className="text-sm font-extrabold text-white">{stats.goalsScored}</span>
+                <span className="text-[8px] text-zinc-500 font-bold tracking-widest block uppercase font-sans">{"Viajes Visitante"}</span>
+                <span className="text-sm font-extrabold text-amber-500">{awayAttendedCount}</span>
               </div>
               <div>
-                <span className="text-[8px] text-zinc-500 font-bold tracking-widest block uppercase font-sans">{"Vallas Invictas"}</span>
-                <span className="text-sm font-extrabold text-white">{stats.cleanSheets}</span>
+                <span className="text-[8px] text-zinc-500 font-bold tracking-widest block uppercase font-sans">{"Goles Gritados"}</span>
+                <span className="text-sm font-extrabold text-white">{stats.goalsScored}</span>
               </div>
             </div>
           </div>
@@ -377,11 +387,19 @@ export default async function HinchaPage() {
             {bestResult ? (
               <div className="space-y-2 pt-1">
                 <p className="text-2xl font-black text-white tracking-tight">
-                  {`${bestResult.goalsVM} - ${bestResult.goalsOpponent}`}
-                  <span className="text-sm font-semibold text-zinc-400 ml-2">{`vs. ${bestResult.awayTeam}`}</span>
+                  {bestResult.homeTeam === "Villa Mitre"
+                    ? `${bestResult.goalsVM} - ${bestResult.goalsOpponent}`
+                    : `${bestResult.goalsOpponent} - ${bestResult.goalsVM}`}
+                  <span className="text-sm font-semibold text-zinc-400 ml-2">
+                    {`vs. ${bestResult.homeTeam === "Villa Mitre" ? bestResult.awayTeam : bestResult.homeTeam}`}
+                  </span>
                 </p>
                 <div className="flex items-center gap-2 text-[9px] text-zinc-500 font-bold uppercase tracking-wider">
                   <span>{`Fecha ${bestResult.fixtureRound}`}</span>
+                  <span>{"•"}</span>
+                  <span className={bestResult.homeTeam === "Villa Mitre" ? "text-green-500" : "text-amber-500"}>
+                    {bestResult.homeTeam === "Villa Mitre" ? "🏟️ Local" : "✈️ Visitante"}
+                  </span>
                   <span>{"•"}</span>
                   <span className="text-green-500">
                     {`+${bestResult.goalsVM! - bestResult.goalsOpponent!} goles de diferencia`}
@@ -392,7 +410,7 @@ export default async function HinchaPage() {
                 )}
               </div>
             ) : (
-              <p className="text-xs text-zinc-500 italic pt-2">{"Aún no presenciaste una victoria en El Fortín."}</p>
+              <p className="text-xs text-zinc-500 italic pt-2">{"Aún no presenciaste victorias en cancha."}</p>
             )}
           </div>
 
@@ -409,15 +427,23 @@ export default async function HinchaPage() {
             {worstResult ? (
               <div className="space-y-2 pt-1">
                 <p className="text-2xl font-black tracking-tight" style={{ color: worstResult.goalsVM! < worstResult.goalsOpponent! ? '#6b7280' : '#ffffff' }}>
-                  {`${worstResult.goalsVM} - ${worstResult.goalsOpponent}`}
-                  <span className="text-sm font-semibold text-zinc-400 ml-2">{`vs. ${worstResult.awayTeam}`}</span>
+                  {worstResult.homeTeam === "Villa Mitre"
+                    ? `${worstResult.goalsVM} - ${worstResult.goalsOpponent}`
+                    : `${worstResult.goalsOpponent} - ${worstResult.goalsVM}`}
+                  <span className="text-sm font-semibold text-zinc-400 ml-2">
+                    {`vs. ${worstResult.homeTeam === "Villa Mitre" ? worstResult.awayTeam : worstResult.homeTeam}`}
+                  </span>
                 </p>
                 <div className="flex items-center gap-2 text-[9px] text-zinc-500 font-bold uppercase tracking-wider">
                   <span>{`Fecha ${worstResult.fixtureRound}`}</span>
+                  <span>{"•"}</span>
+                  <span className={worstResult.homeTeam === "Villa Mitre" ? "text-zinc-500" : "text-amber-500"}>
+                    {worstResult.homeTeam === "Villa Mitre" ? "🏟️ Local" : "✈️ Visitante"}
+                  </span>
                   {worstResult.goalsVM! < worstResult.goalsOpponent! && (
                     <>
                       <span>{"•"}</span>
-                      <span className="text-zinc-600">
+                      <span className="text-zinc-650">
                         {`-${worstResult.goalsOpponent! - worstResult.goalsVM!} goles de diferencia`}
                       </span>
                     </>
@@ -425,7 +451,7 @@ export default async function HinchaPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-zinc-500 italic pt-2">{"Aún no registrás derrotas ni empates en El Fortín."}</p>
+              <p className="text-xs text-zinc-500 italic pt-2">{"Aún no registrás derrotas ni empates en cancha."}</p>
             )}
           </div>
 

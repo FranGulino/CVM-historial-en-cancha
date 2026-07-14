@@ -256,6 +256,22 @@ export default function PartidosClient({ matches, userId }: PartidosClientProps)
         </div>
       </div>
 
+      {/* Cartel explicativo de asistencia */}
+      <div className="rounded-[8px] bg-[#1d211e]/45 border border-[#2d6a4f]/20 p-3 sm:p-4 flex flex-col md:flex-row justify-around items-start md:items-center gap-3 text-[10px] text-zinc-450 tracking-wide font-sans leading-relaxed">
+        <div className="flex items-center gap-2">
+          <span className="text-sm">{"🏟️"}</span>
+          <p>
+            <strong className="text-zinc-200">{"Cancha (Presencial):"}</strong>{" Estuve presente en el estadio (aplica local en El Fortín y viajes de visitante)."}
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm">{"📺"}</span>
+          <p>
+            <strong className="text-zinc-200">{"TV / Radio (Distancia):"}</strong>{" Alenté a la distancia por transmisión oficial (TV, Radio o Streaming)."}
+          </p>
+        </div>
+      </div>
+
       {/* Grid de Partidos */}
       {paginatedItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center p-16 rounded-[8px] border border-dashed border-zinc-800 bg-zinc-950/20 text-center">
