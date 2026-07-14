@@ -122,7 +122,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Sección de Frases (Impacto) */}
+        {/* Sección de Frases (Impacto) — ahora directamente debajo del Hero */}
         <section id="features" className="max-w-7xl mx-auto px-4 py-8 text-center space-y-4 scroll-mt-24">
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase font-sans">
             {"El Club de la Ciudad"}
@@ -131,36 +131,6 @@ export default async function HomePage() {
           <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest pt-2">
             {"Villa Mitre — El más grande del sur argentino"}
           </p>
-        </section>
-
-        {/* Sección de Características (Grid de 3 tarjetas) */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="p-6 rounded-[8px] border border-zinc-800 bg-[#1d211e] space-y-3">
-              <div className="text-2xl text-[#2d6a4f]">{"🏟️"}</div>
-              <h3 className="text-base font-bold text-white">{"Tu Bitácora Digital"}</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                {"Llevá un registro exacto de cada partido de la campaña. Alentá de forma presencial en El Fortín o a la distancia por TV/Radio."}
-              </p>
-            </div>
-            {/* Card 2 */}
-            <div className="p-6 rounded-[8px] border border-zinc-800 bg-[#1d211e] space-y-3">
-              <div className="text-2xl text-[#2d6a4f]">{"📊"}</div>
-              <h3 className="text-base font-bold text-white">{"Rendimiento en Casa"}</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                {"Analizá tu asistencia a El Fortín, calculá la efectividad de victorias de local y descubrí el ranking de goleadores que presenciaste en vivo."}
-              </p>
-            </div>
-            {/* Card 3 */}
-            <div className="p-6 rounded-[8px] border border-zinc-800 bg-[#1d211e] space-y-3">
-              <div className="text-2xl text-[#2d6a4f]">{"⏳"}</div>
-              <h3 className="text-base font-bold text-white">{"Próximo Encuentro"}</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                {"Visualizá un reloj interactivo con la cuenta regresiva en vivo para el próximo partido. No te pierdas ningún detalle de la fecha."}
-              </p>
-            </div>
-          </div>
         </section>
 
         {/* Sección del Mapa: Nuestra Casa */}
@@ -193,7 +163,7 @@ export default async function HomePage() {
                   <span className="text-2xl">{"📍"}</span>
                   <div>
                     <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Dirección"}</p>
-                    <p className="text-sm font-bold text-zinc-300">{"Maipú 750, Bahía Blanca"}</p>
+                    <p className="text-sm font-bold text-zinc-300">{"Necochea 200, Bahía Blanca"}</p>
                     <p className="text-xs text-zinc-500">{"Buenos Aires, Argentina"}</p>
                   </div>
                 </div>
@@ -201,7 +171,7 @@ export default async function HomePage() {
                   <span className="text-2xl">{"👕"}</span>
                   <div>
                     <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider">{"Club"}</p>
-                    <p className="text-sm font-bold text-zinc-300">{"Club Atlético Villa Mitre"}</p>
+                    <p className="text-sm font-bold text-zinc-300">{"Club Villa Mitre"}</p>
                     <p className="text-xs text-zinc-500">{"Fundado en 1933"}</p>
                   </div>
                 </div>
@@ -215,7 +185,7 @@ export default async function HomePage() {
                 </div>
               </div>
               <a
-                href="https://www.google.com/maps/search/Club+Atletico+Villa+Mitre+Bahia+Blanca+Argentina"
+                href="https://maps.app.goo.gl/3DnNS8diyCSAiRbL8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 h-9 rounded-[8px] border border-[#2d6a4f]/50 text-[10px] font-bold uppercase tracking-wider text-[#2d6a4f] hover:bg-[#2d6a4f]/10 transition-all"
@@ -227,7 +197,7 @@ export default async function HomePage() {
             {/* Mapa Embed de Google Maps — Villa Mitre en El Fortín */}
             <div className="lg:col-span-2 overflow-hidden rounded-[8px] border border-zinc-800" style={{ height: "340px", position: "relative" }}>
               <iframe
-                src="https://maps.google.com/maps?q=Club+Atletico+Villa+Mitre+Bahia+Blanca+Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=-38.737451,-62.239458&t=&z=17&ie=UTF8&iwloc=B&output=embed"
                 width="100%"
                 height="380"
                 style={{ border: 0, marginTop: "-4px", filter: "invert(90%) hue-rotate(180deg) saturate(0.7) brightness(0.85)" }}
