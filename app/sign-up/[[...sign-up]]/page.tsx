@@ -35,6 +35,7 @@ export default function SignUpPage() {
         {/* Formulario de Clerk — sin contenedor visual que pelee con la tarjeta de Clerk */}
         <div className="w-full flex justify-center">
           <SignUp
+            path="/sign-up"
             appearance={{
               elements: {
                 card: "bg-white shadow-2xl rounded-[8px] border border-zinc-200/50 w-full",

@@ -35,6 +35,7 @@ export default function SignInPage() {
         {/* Formulario de Clerk — sin contenedor visual que pelee con la tarjeta de Clerk */}
         <div className="w-full flex justify-center">
           <SignIn
+            path="/sign-in"
             appearance={{
               elements: {
                 card: "bg-white shadow-2xl rounded-[8px] border border-zinc-200/50 w-full",
