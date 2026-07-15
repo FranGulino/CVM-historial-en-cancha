@@ -10,7 +10,7 @@ La plataforma se conecta a un motor relacional en la nube para sincronizar diná
 
 ## 🌐 Demo En Vivo
 
-Podés acceder a la versión de producción aquí: **[El Fortín Digital (Vercel)](https://cvm-historial-en-cancha.vercel.app/)** *(Reemplazar con tu URL real)*
+Podés acceder a la versión de producción aquí: **[El Fortín Digital (Vercel)](https://cvm-historial-en-cancha.vercel.app/)** 
 
 Si no querés registrarte con tu cuenta personal, podés iniciar sesión con estas credenciales de prueba para ver la plataforma con estadísticas reales de asistencia, racha del hincha y ranking ya precargados:
 *   **Usuario (Username):** `invitadofortin`
