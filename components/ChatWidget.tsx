@@ -178,11 +178,11 @@ Soy tu DT de confianza y estoy acá para analizar tu fidelidad con el Tricolor, 
         </button>
       </div>
 
-      {/* Ventana de Chat Flotante Pop-up */}
+      {/* Ventana de Chat Flotante Pop-up (Fullscreen en móvil para evitar bugs de teclado, flotante en desktop) */}
       {isOpen && (
-        <div className="fixed bottom-[160px] right-4 md:bottom-24 md:right-24 z-50 w-[92%] sm:w-96 h-[460px] sm:h-[500px] flex flex-col bg-[#111412] border border-zinc-850 rounded-[16px] shadow-2xl overflow-hidden font-sans animate-slide-up-widget">
-          {/* Cabezal del Widget */}
-          <div className="p-3.5 border-b border-zinc-900 bg-zinc-950/40 backdrop-blur-sm flex items-center justify-between flex-shrink-0">
+        <div className="fixed inset-0 md:inset-auto md:bottom-24 md:right-24 z-[60] w-full h-full md:w-96 md:h-[500px] flex flex-col bg-[#111412] md:border md:border-zinc-850 md:rounded-[16px] md:shadow-2xl overflow-hidden font-sans animate-slide-up-widget">
+          {/* Cabezal del Widget (Con padding superior en móvil para liberar el notch) */}
+          <div className="pt-10 md:pt-3.5 pb-3.5 px-4 border-b border-zinc-900 bg-zinc-950/40 backdrop-blur-sm flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2.5">
               <div className="relative h-8 w-8 rounded-full border border-[#2d6a4f]/30 bg-[#1d211e] flex items-center justify-center overflow-hidden flex-shrink-0">
                 <span className="text-base">👔</span>
@@ -264,8 +264,8 @@ Soy tu DT de confianza y estoy acá para analizar tu fidelidad con el Tricolor, 
             </div>
           )}
 
-          {/* Entrada de Chat */}
-          <div className="p-3 bg-zinc-950/50 border-t border-zinc-900 flex-shrink-0">
+          {/* Entrada de Chat (Con padding inferior en móvil para liberar barra de gestos de iOS/Android) */}
+          <div className="p-3 pb-6 md:pb-3 bg-zinc-950/50 border-t border-zinc-900 flex-shrink-0">
             <form 
               onSubmit={handleSubmit}
               className="bg-[#1d211e] border border-zinc-850 p-1.5 rounded-[10px] flex gap-2"
