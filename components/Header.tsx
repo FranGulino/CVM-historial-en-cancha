@@ -140,8 +140,8 @@ export default function Header() {
         </Link>
       </nav>
 
-      {/* Widget de Chat del DT Inteligente */}
-      <ChatWidget />
+      {/* Widget de Chat del DT Inteligente (Solo visible en la página Institucional / Home) */}
+      {pathname === "/" && <ChatWidget />}
     </header>
   );
 }
