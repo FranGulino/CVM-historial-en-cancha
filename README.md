@@ -13,12 +13,12 @@ La plataforma se conecta a un motor relacional en la nube para sincronizar diná
 | Dashboard General & Portal | El Asistente: DT Inteligente 🤖 |
 | :---: | :---: |
 | **Sección Institucional** <br> *Cuenta regresiva en tiempo real, bienvenida interactiva y geolocalización del templo de Maipú y Necochea.* | **Chatbot del Vestuario** <br> *Asistente interactivo con IA (Gemini) en formato widget flotante, con preguntas sugeridas y respuestas con mística villera.* |
-| <img width="1830" height="3952" alt="Sección Institucional El Fortín Digital" src="https://github.com/user-attachments/assets/778444f3-fc97-4c11-9a84-94842a40d415" /> | <img width="1830" height="3952" alt="Chatbot DT Inteligente Abierto" src="https://github.com/user-attachments/assets/b5625256-b73a-4d5e-8793-bd863f996bad" /> |
+| <img width="1830" height="3952" alt="cvm-historial-en-cancha vercel app_" src="https://github.com/user-attachments/assets/2b0e4249-cdb6-4df0-9229-e01069e8acd1" /> | <img width="1830" height="3952" alt="cvm-historial-en-cancha vercel app_ (1)" src="https://github.com/user-attachments/assets/cd2f997b-6f3d-4784-975e-e5c3e0c471a0" /> |
 
 | Control de Asistencia | Ecosistema del Hincha |
 | :---: | :---: |
 | **Fixture Federal A** <br> *Filtros avanzados por sede/resultado, buscador semántico y registro condicional según la localía de cada partido.* | **Características de la Plataforma** <br><br> 🟢 **Autenticación Segura:** Sesiones con Clerk Auth integradas al flujo relacional.<br><br>⚫ **Base de Datos Serverless:** Persistencia robusta y ágil en Neon PostgreSQL.<br><br>🏆 **Ranking de Fidelidad:** Tabla de posiciones interactiva en tiempo real entre todos los hinchas registrados.<br><br>🏟️ **Viajes de Visitante:** Registro de viajes y partidos presenciales afuera del Fortín, sumando para tu rango de socio.<br><br>🟢 **Diseño UI Premium:** Modo oscuro inmersivo con Tailwind CSS diseñado a medida para el Villero. |
-| <img src="https://github.com/user-attachments/assets/bb26902f-b8e2-41e6-a4fa-0626d3517ddb" width="100%" /> | <img src="https://github.com/user-attachments/assets/8c5b193f-00fb-4c8c-a4b7-d0bd7fe0b99c" width="100%" /> |
+| <img width="1830" height="4714" alt="cvm-historial-en-cancha vercel app_ (2)" src="https://github.com/user-attachments/assets/660dc323-4644-4940-ab31-1809c603a699" /> | <img width="1830" height="4332" alt="cvm-historial-en-cancha vercel app_ (3)" src="https://github.com/user-attachments/assets/d4296051-7bdf-4d29-ad30-de0c0e986506" /> |
 
 ---
 
@@ -27,7 +27,7 @@ La plataforma se conecta a un motor relacional en la nube para sincronizar diná
 * **Framework:** Next.js (App Router) con TypeScript para garantizar tipado estricto y excelente performance en la renderización del servidor.
 * **Inteligencia Artificial:** API de Google Gemini (SDK `@google/generative-ai`) para el motor del chatbot.
 * **Base de Datos:** PostgreSQL administrado y hospedado de forma elástica en la nube mediante Neon Database.
-* **ORM:** Prisma ORM para el modelado relacional de datos, control de las tablas y consultas declarativas.
+* **ORM:** Prisma ORM para el modelado relacional de datos, control de las tablas y consultas de bases de datos.
 * **Autenticación:** Clerk Auth para la gestión segura de sesiones de usuarios y vinculación única de perfiles de hinchas con su ID de socio.
 * **Estilos:** Tailwind CSS con una paleta de colores personalizada que respeta fielmente la identidad del Club (verde bosque, blanco y negro antracita).
 * **Despliegue:** Vercel.
