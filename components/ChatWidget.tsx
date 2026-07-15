@@ -45,6 +45,21 @@ Soy tu DT de confianza y estoy acá para analizar tu fidelidad con el Tricolor, 
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Cerrar el widget al presionar la tecla Escape (UX de Escritorio)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   // Ocultar si no está autenticado
   if (!isSignedIn) return null;
 
@@ -143,6 +158,13 @@ Soy tu DT de confianza y estoy acá para analizar tu fidelidad con el Tricolor, 
         }
         .animate-slide-up-widget {
           animation: slideUpWidget 0.25s ease-out forwards;
+        }
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
 
@@ -277,6 +299,7 @@ Soy tu DT de confianza y estoy acá para analizar tu fidelidad con el Tricolor, 
                 placeholder="Preguntale al DT..."
                 className="flex-1 bg-transparent px-2.5 py-1.5 text-xs text-white placeholder-zinc-500 focus:outline-none"
                 disabled={isLoading}
+                autoFocus
               />
               <button
                 type="submit"
