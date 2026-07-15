@@ -78,18 +78,13 @@ export default function Header() {
         {/* Acciones del Lado Derecho (Clerk integrado de forma personalizada) */}
         <div className="flex items-center gap-6">
           <Show when="signed-in">
-            <div className="flex items-center gap-3">
-              <span className="hidden sm:inline text-xs font-bold text-zinc-400 tracking-wider">
-                {user?.firstName ? `Hola, ${user.firstName}` : "Mi Cuenta"}
-              </span>
-              <UserButton
-                appearance={{
-                  elements: {
-                    userButtonAvatarBox: "h-9 w-9 rounded-full border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-green-500",
-                  },
-                }}
-              />
-            </div>
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: "h-9 w-9 rounded-full border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-green-500",
+                },
+              }}
+            />
           </Show>
           
           <Show when="signed-out">
