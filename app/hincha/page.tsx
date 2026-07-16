@@ -51,8 +51,6 @@ export default async function HinchaPage() {
     const goalsVM = match.goalsVM!;
     const goalsOpponent = match.goalsOpponent!;
 
-    stats.goalsScored += goalsVM;
-
     if (goalsVM > goalsOpponent) {
       stats.localWins += 1;
     } else if (goalsVM === goalsOpponent) {
@@ -78,6 +76,11 @@ export default async function HinchaPage() {
   const userPresencialAttendances = playedMatches.filter((match) =>
     match.attendances.some((att) => att.userId === userId && att.type === "PRESENCIAL")
   );
+
+  // Calcular goles gritados presenciales (tanto de local en El Fortín como de visitante)
+  userPresencialAttendances.forEach((match) => {
+    stats.goalsScored += match.goalsVM!;
+  });
 
   // Rango de fidelidad total (Local + Visitante presencial)
   const totalPresencialAttended = userPresencialAttendances.length;
